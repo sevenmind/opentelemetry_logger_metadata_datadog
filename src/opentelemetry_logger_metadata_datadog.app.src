@@ -1,5 +1,5 @@
-{application, opentelemetry_logger_metadata,
- [{description, "Adds OpenTelemetry trace identifiers to logs"},
+{application, opentelemetry_logger_metadata_datadog,
+ [{description, "Adds OpenTelemetry trace identifiers to logs in the Datadog format"},
   {vsn, {file, "VERSION"}},
   {registered, []},
   {applications, [kernel, stdlib, opentelemetry_api]},
@@ -7,7 +7,7 @@
   {modules, []},
   {licenses, ["MIT"]},
   {links, [
-           {"GitHub", "https://github.com/salemove/opentelemetry_logger_metadata"},
+           {"GitHub", "https://github.com/sevenmind/opentelemetry_logger_metadata_datadog"},
            {"OpenTelemetry Erlang", "https://github.com/open-telemetry/opentelemetry-erlang"},
            {"OpenTelemetry.io", "https://opentelemetry.io"}
           ]}

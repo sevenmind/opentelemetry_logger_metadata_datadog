@@ -1,4 +1,4 @@
-defmodule OpentelemetryLoggerMetadata do
+defmodule OpentelemetryLoggerMetadataDataDog do
   @moduledoc """
   Adds OpenTelemetry trace identifiers to logs.
 
@@ -6,8 +6,7 @@ defmodule OpentelemetryLoggerMetadata do
 
   ```elixir
       def start(_type, _args) do
-        OpenTelemetry.register_application_tracer(:my_project)
-        OpentelemetryLoggerMetadata.setup()
+        OpentelemetryLoggerMetadataDataDog.setup()
 
         # ...
       end
@@ -15,6 +14,6 @@ defmodule OpentelemetryLoggerMetadata do
   """
 
   def setup do
-    :opentelemetry_logger_metadata.setup()
+    :opentelemetry_logger_metadata_datadog.setup()
   end
 end

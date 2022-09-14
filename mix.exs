@@ -1,4 +1,4 @@
-defmodule OpentelemetryLoggerMetadata.MixProject do
+defmodule OpentelemetryLoggerMetadataDataDog.MixProject do
   use Mix.Project
 
   def project do
@@ -12,17 +12,17 @@ defmodule OpentelemetryLoggerMetadata.MixProject do
       start_permanent: Mix.env() == :prod,
       deps: deps(Keyword.fetch!(config, :deps)),
       docs: [
-        main: "OpentelemetryLoggerMetadata",
+        main: "OpentelemetryLoggerMetadataDataDog",
         extras: ["README.md"]
       ],
       elixirc_paths: elixirc_paths(Mix.env()),
       package: [
-        name: "opentelemetry_logger_metadata",
+        name: "opentelemetry_logger_metadata_datadog",
         description: to_string(Keyword.fetch!(desc, :description)),
         maintainers: ["Glia TechMovers"],
         licenses: ["MIT"],
         links: %{
-          "GitHub" => "https://github.com/salemove/opentelemetry_logger_metadata",
+          "GitHub" => "https://github.com/sevenmind/opentelemetry_logger_metadata_datadog",
           "OpenTelemetry Erlang" => "https://github.com/open-telemetry/opentelemetry-erlang",
           "OpenTelemetry.io" => "https://opentelemetry.io"
         },
@@ -67,7 +67,7 @@ defmodule OpentelemetryLoggerMetadata.MixProject do
 
   defp load_app do
     {:ok, [{:application, name, desc}]} =
-      :file.consult("src/opentelemetry_logger_metadata.app.src")
+      :file.consult("src/opentelemetry_logger_metadata_datadog.app.src")
 
     {name, desc}
   end

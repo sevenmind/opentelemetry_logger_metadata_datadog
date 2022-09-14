@@ -1,6 +1,8 @@
 # OpentelemetryLoggerMetadataDataDog
 
-Adds OpenTelemetry trace identifiers to logs.
+Adds OpenTelemetry trace identifiers to logs in the datadog format. i.e. adds `{"dd": {"trace_id":12315400,"span_id":8944345}}` to your logger metadata.
+
+Logging into a json format with [logger_json](https://github.com/Nebo15/logger_json) is recommended. 
 
 ## Installation
 
@@ -21,7 +23,6 @@ In your application start:
 
 ```elixir
     def start(_type, _args) do
-      OpenTelemetry.register_application_tracer(:my_project)
       OpentelemetryLoggerMetadataDataDog.setup()
 
       # ...

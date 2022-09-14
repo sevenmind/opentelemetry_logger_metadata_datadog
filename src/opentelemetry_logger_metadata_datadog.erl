@@ -18,8 +18,8 @@ span_id_to_dd(HexVal) ->
     Int = list_to_integer(SpanId, 16),
     integer_to_binary(Int).
 
-% Translates a OTLP Trace ID into a datadog friendly trace id. 
-% Based on the the DataDog-Agent implementation:
+% Translate a OTLP Trace ID into a datadog friendly trace id. 
+% recreating the behavior of the the DataDog-Agent implementation:
 % https://github.com/DataDog/datadog-agent/blob/f33d8f00422e4a064d467077879f4301ecd62a46/pkg/trace/api/otlp.go#L639-L641
 trace_id_to_dd(HexTraceId) ->
     TraceSlice = binary:part(HexTraceId, {byte_size(HexTraceId), -16}),
@@ -32,12 +32,10 @@ filter(LogEvent, _Config) ->
         undefined ->
             ignore;
         SpanCtx ->
-            % io:format(SpanCtx),
             HexTraceId = otel_span:hex_trace_id(SpanCtx),
             HexSpanId = otel_span:hex_span_id(SpanCtx),
             TraceId = trace_id_to_dd(HexTraceId),
             SpanId = span_id_to_dd(HexSpanId),
-            %  truncate trace_id to 16 char
 
             #{meta := Meta} = LogEvent,
             TraceInformation = #{trace_id => TraceId, span_id => SpanId},
